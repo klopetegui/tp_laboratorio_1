@@ -64,8 +64,9 @@ unsigned long CalcularFactorial(float numeroRecibido)
 	unsigned long resultado;
     int i;
     unsigned long retorno;
+    retorno=1;
     resultado = 1;
-    if(numeroRecibido>0 )
+    if(numeroRecibido>1 )
     {
         for(i=2; i<=numeroRecibido; i++){
             resultado *= i;
