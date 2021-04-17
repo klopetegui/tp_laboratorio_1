@@ -78,14 +78,10 @@ float MultiplicacionOperandos(float primerNumero, float segundoNumero);
  */
 unsigned long CalcularFactorial(float numeroRecibido);
 
-/**
- * @fn float DivisorOperandosDistintosTipos(float, int)
- * @brief recibe dos numeros de distinto tipo y los divide
- *
- * @param dividendo
- * @param divisor
- * @return devuelve el cociente de la division
- */
-float DivisorOperandosDistintosTipos(float dividendo, int divisor);//utilizado como filtro de  enteros para el calculo del factorial
+
+
+
+
+
 
 #endif /* FUNCIONES_TP_1_H_ */

@@ -76,9 +76,4 @@ unsigned long CalcularFactorial(float numeroRecibido)
     return retorno;
 }
 
-float DivisorOperandosDistintosTipos(float dividendo, int divisor)
-{
-    float cociente;
-    cociente = dividendo / divisor;
-    return cociente;
-}
+

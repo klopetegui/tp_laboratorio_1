@@ -62,12 +62,9 @@ int main(void) {
 
 	do
 	{
-		printf("1. Ingresar 1er operando (A= %.2f)\n",numeroA);
-		printf("2. Ingresar 2do operando (B= %.2f)\n", numeroB);
-		printf("3. Calcular todas las operaciones\n");
-		printf("4. Informar resultados\n");
-		printf("5. Salir\n");
+		printf("1. Ingresar 1er operando (A= %.2f)\n2. Ingresar 2do operando (B= %.2f)\n3. Calcular todas las operaciones\n4. Informar resultados\n5. Salir\n",numeroA, numeroB);
 
+		fflush(stdin);
 		opcion= GetInt();
 
 		if((opcion>0) & (opcion<6))
@@ -76,11 +73,13 @@ int main(void) {
 		switch(opcion)
 			{
 				case 1://ingreso el primer operando
+					fflush(stdin);
 					numeroA= GetFloat();
 					banderaNumeroA=1;
 				break;
 
 				case 2://ingreso el segundo operando
+					fflush(stdin);
 					numeroB=GetFloat();
 					banderaNumeroB=1;
 				break;
@@ -97,26 +96,25 @@ int main(void) {
 						}
 
 						auxiliarA=(int)numeroA;
-						auxiliarFactorialA=DivisorOperandosDistintosTipos(numeroA,auxiliarA);//mediante una division si el numero ingresado es un entero
-
-						if(auxiliarFactorialA==1)
+						auxiliarFactorialA=RestarOperandos(numeroA,auxiliarA);//para saber si el numero ingresado tiene valores despues de la coma
+						if(auxiliarFactorialA==0)
 						{
 							factorialA=CalcularFactorial(auxiliarA);
 						}
 						auxiliarB=(int)numeroB;
-						auxiliarFactorialB=DivisorOperandosDistintosTipos(numeroB,auxiliarB);//mediante una division si el numero ingresado es un entero
-						if(auxiliarFactorialB==1)
+						auxiliarFactorialB=RestarOperandos(numeroB,auxiliarB);//para saber si el numero ingresado tiene valores despues de la coma
+						if((auxiliarFactorialB==0)&& (numeroB>-1) )
 						{
 							factorialB=CalcularFactorial(auxiliarB);
 						}
 
 						banderaOperaciones=1;
-						printf("Se realizaron las operaciones.\n");
+						printf("\nSe realizaron las operaciones con exito.\n\n");
 
 					}
 					else
 					{
-						printf("No has ingresado todos los operandos, por lo tanto no se pueden calcular todas las operaciones.\n");
+						printf("\nNo has ingresado todos los operandos, por lo tanto no se pueden calcular todas las operaciones.\n\n");
 					}
 
 				break;
@@ -124,44 +122,47 @@ int main(void) {
 				case 4://muestro los resultados
 					if(banderaOperaciones==1)
 					{
-						printf("El resultado de la suma entre A y B es :%.2f\n",sumaAYB);
+						printf("\nEl resultado de la suma entre A y B es :%.2f\n",sumaAYB);
 						printf("El resultado de la resta entre A y B es :%.2f\n",restaAYB);
 						if(numeroB!=0)
 						{
 							printf("El resultado de la division entre A y B es :%.2f\n",divisionAYB);
 						}
-						printf("El resultado de la multiplicacion entre A y B es :%.2f\n",multiplicacionAYB);
-						if(auxiliarFactorialA==1)
+						else {
+							printf("\nNo se puede dividir por cero\n\n");
+						}
+						printf("\nEl resultado de la multiplicacion entre A y B es :%.2f\n",multiplicacionAYB);
+						if((auxiliarFactorialA==0)&& (numeroA>-1))
 						{
-							printf("El resultado del factorial de A es :%lu\n",factorialA);
+							printf("\nEl resultado del factorial de A es :%lu\n\n",factorialA);
 						}
 						else
 						{
-							printf("No se pudo calcular el factorial de A\n");
+							printf("\nNo se pudo calcular el factorial de A ya que el numero ingresado debe ser entero y positivo.\n\n");
 						}
-						if(auxiliarFactorialB==1)
+						if((auxiliarFactorialB==0)&& (numeroB>-1))
 						{
-							printf("El resultado del factorial de B es :%lu\n",factorialB);
+							printf("El resultado del factorial de B es :%lu\n\n",factorialB);
 						}
 						else
 						{
-							printf("No se pudo calcular el factorial de A\n");
+							printf("\nNo se pudo calcular el factorial de B ya que el numero ingresado debe ser entero y positivo.\n\n");
 						}
 					}
 					else
 					{
-						printf("No se han calculado todas las operaciones, por lo tanto no se pueden mostrar.\n");
+						printf("\nNo se han calculado todas las operaciones, por lo tanto no se pueden mostrar.\n\n");
 					}
 				break;
 			}
 		}else
 		{
-			printf("Error. Reingrese una opcion valida\n");
+			printf("\nError. Reingrese una opcion valida\n");
 		}
 
 
 
 	}while(opcion!=5);
-	printf("Ha salido del programa con exito.\n");
+	printf("\nHa salido del programa con exito.\n");
 	return EXIT_SUCCESS;
 }
